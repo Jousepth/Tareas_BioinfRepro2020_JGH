@@ -1,0 +1,60 @@
+---
+title: "Tarea3.4.r"
+author: "Jousepth Gallardo"
+date: "25/1/2020"
+output: html_document
+---
+
+Las actividades de la tarea son las siguientes: 
+
+1) Hacer un barplot de reads por muestra
+2) Poner títulos al grafico y a cada eje
+3) Colorear cada librería cambiando la paleta de colores, usando su alma de data artistas
+4) Escribir el script usando Rmarkdown y guardarlo en html (knit) 
+5) Subir los archivos Rmarkdown y .html a su repo de Github
+6) Mandar el link del archivo html para completar la tarea
+
+
+
+EL primer script borra toda la memoria en r
+```{r}
+rm(list = ls())
+
+```
+
+Cargando los datos.
+
+```{r}
+df <- read.delim("../data/reads.txt", header = TRUE)
+
+```
+
+Cambiando paleta 
+colores obtenidos desde pagina "https://medialab.github.io/iwanthue/"
+
+```{r}
+palette(c("#98db41",
+          "#9e43cc",
+          "#e74e33"))
+```
+
+Genaración del barplot
+
+```{r}
+barplot(df$nreads,
+        col = df$Library, 
+        ylab = "Reads", 
+        xlab = "Samples",
+        main="Barplot_Reads_tarea_3.4"
+        )
+legend(x="topleft", legend = levels(df$Library), fill = palette())
+```
+
+
+
+
+
+
+
+
+
